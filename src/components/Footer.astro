@@ -13,7 +13,8 @@ const year = new Date().getFullYear();
 
 <style>
   .footer { background: var(--navy); color: var(--on-dark-2); }
-  .inner { padding-block: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  img { height: 24px; width: auto; }
-  span { font-size: 14px; }
+  .inner { max-width: none; padding-inline: clamp(24px, 4vw, 72px); padding-block: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  img { height: 36px; width: auto; }
+  span { font-size: 15px; }
+  @media (max-width: 960px) { img { height: 30px; } }
 </style>
