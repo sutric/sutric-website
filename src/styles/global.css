@@ -1,0 +1,33 @@
+:root {
+  --navy: #0B1E35; --navy-2: #0E2642; --blue: #1F4E8C; --bright: #3D82F0; --sky: #7FB2FF;
+  --paper: #F4EEE4; --white: #FFFFFF; --line: #E4DACB; --line-2: #D6C9B6;
+  --ink: #0B1E35; --ink-2: #4F5866; --on-dark: #F4EEE4; --on-dark-2: #BFCBDB; --on-dark-3: #D6E2F2;
+  --amber: #E3C79A; --amber-2: #B8925A;
+  --font: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --max: 1440px; --gutter: 32px;
+  --track: 0; --label-track: 0;
+}
+html[lang='en'] { --font: 'IBM Plex Sans', 'Segoe UI', sans-serif; --track: -0.02em; --label-track: 0.08em; }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; background: var(--navy); }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--paper); line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+h1, h2, h3, p { margin: 0; }
+a { color: var(--blue); }
+a:hover { color: var(--amber-2); }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.eyebrow { font-size: 15px; font-weight: 700; color: var(--blue); letter-spacing: var(--label-track); }
+.eyebrow--dark { color: var(--sky); }
+.h2 { font-size: clamp(32px, 4vw, 54px); font-weight: 700; line-height: 1.15; letter-spacing: var(--track); text-wrap: balance; }
+.btn { display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 14px 30px; font-size: 17px; font-weight: 700; text-decoration: none; white-space: nowrap; flex: none; transition: background .2s, border-color .2s; }
+.btn--light { background: var(--paper); color: var(--navy); }
+.btn--light:hover { background: var(--white); color: var(--navy); }
+.btn--ghost { border: 1px solid rgba(244,238,228,.35); color: var(--on-dark); font-weight: 600; }
+.btn--ghost:hover { border-color: var(--on-dark); color: var(--white); }
+.btn--dark { background: var(--navy); color: var(--on-dark); min-height: 58px; padding: 14px 32px; }
+.btn--dark:hover { background: var(--blue); color: var(--white); }
+:focus-visible { outline: 3px solid rgba(227,199,154,.6); outline-offset: 2px; }
+@keyframes sutricMarquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes sutricPulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: 0s !important; scroll-behavior: auto !important; } }

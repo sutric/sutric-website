@@ -1,0 +1,289 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { t, contact, WHY_ICONS, type Lang } from '../i18n/content';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = t(lang);
+const marquee = [...c.marquee, ...c.marquee];
+const pad = (i: number) => '0' + (i + 1);
+const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
+---
+<Base lang={lang}>
+  <Header lang={lang} />
+  <main>
+    <section class="hero">
+      <img class="hero-mark" src="/images/sutric-mark-white.png" alt="" aria-hidden="true" />
+      <div class="container hero-inner">
+        <div class="hero-top">
+          <h1>{c.hero.title1} <span>{c.hero.title2}</span></h1>
+          <p class="lead"><span>{c.hero.lead}</span></p>
+          <div class="actions">
+            <a href="#services" class="btn btn--light">{c.hero.primary} <span aria-hidden="true">{c.arrow}</span></a>
+            <a href="#contact" class="btn btn--ghost">{c.hero.secondary}</a>
+          </div>
+        </div>
+        <div class="flow"><sutric-energy-flow lang={lang}></sutric-energy-flow></div>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          {marquee.map((m) => <span class="m" dir={c.dir}>{m}<i></i></span>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container grid2 about-top">
+        <div class="stack">
+          <div class="eyebrow">{c.about.eyebrow}</div>
+          <h2 class="h2">{c.about.title}</h2>
+        </div>
+        <div class="stack">
+          <p class="body-lg">{c.about.text}</p>
+          <div class="chips">{c.about.items.map((x) => <span>{x}</span>)}</div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="vision">
+          <div class="v1">
+            <div class="eyebrow" style="color:var(--amber)">{c.about.visionLabel}</div>
+            <p>{c.about.vision}</p>
+          </div>
+          <div class="v2">
+            <p>“{c.about.quote}”</p>
+            <span>— {c.footer}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="sec-head bordered">
+          <div class="eyebrow">{c.services.eyebrow}</div>
+          <h2 class="h2">{c.services.title}</h2>
+        </div>
+        <div class="svc-grid">
+          <article class="svc svc-1">
+            <div><span class="tag">{c.services.s1.tag}</span></div>
+            <h3>{c.services.s1.title}</h3>
+            <p>{c.services.s1.text}</p>
+            <ul>{c.services.s1.points.map((pt) => <li><i></i>{pt}</li>)}</ul>
+          </article>
+          <article class="svc svc-2">
+            <div class="stack-sm">
+              <h3>{c.services.s2.title}</h3>
+              <p>{c.services.s2.text}</p>
+            </div>
+            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6 M10 21.5h4 M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.5.4.8 1 .8 1.7V18h6v-2c0-.7.3-1.3.8-1.7A6.5 6.5 0 0 0 12 2.5z"></path><path d="M12 6.5v3l2 1.5" stroke="#B8925A"></path></svg>
+          </article>
+          <article class="svc svc-3">
+            <div class="end"><span class="arrow">{c.arrow}</span></div>
+            <h3>{c.services.s3.title}</h3>
+            <p>{c.services.s3.text}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="caps">
+      <div class="container grid2 caps-inner">
+        <div class="stack-lg">
+          <div class="stack-sm">
+            <div class="eyebrow">{c.caps.eyebrow}</div>
+            <h2 class="h2">{c.caps.title}</h2>
+          </div>
+          <div class="cap-list">
+            {c.caps.items.map((x) => <div class="cap"><strong>{x.title}</strong><span>{x.text}</span></div>)}
+          </div>
+        </div>
+        <div class="cap-img"><img src="/images/energy-management-dashboard.jpg" alt={c.caps.imgAlt} loading="lazy" /></div>
+      </div>
+    </section>
+
+    <section id="industries" class="ind">
+      <div class="container">
+        <div class="sec-head narrow">
+          <div class="eyebrow">{c.ind.eyebrow}</div>
+          <h2 class="h2">{c.ind.title}</h2>
+        </div>
+        <div class="ind-grid">
+          {c.ind.items.map((x, i) => (
+            <article class="card" style={`border-top-color:${indColors[i]}`}>
+              <h3>{x.title}</h3>
+              <p>{x.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="how">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow eyebrow--dark">{c.how.eyebrow}</div>
+          <h2 class="h2">{c.how.title}</h2>
+        </div>
+        <div class="steps">
+          {c.how.steps.map((s, i) => (
+            <div class={i === 0 ? 'step first' : 'step'}>
+              <i></i>
+              <span class="n">{pad(i)}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+        <div class="works">
+          <span>{c.how.worksWith}</span>
+          <div class="brands">{c.how.brands.map((b) => <span>{b}</span>)}</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="why">
+      <div class="container">
+        <div class="sec-head">
+          <div class="eyebrow">{c.why.eyebrow}</div>
+          <h2 class="h2" style="max-width:760px">{c.why.title}</h2>
+        </div>
+        <div class="why-grid">
+          {c.why.items.map((label, i) => (
+            <div class="why-card">
+              <span class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={WHY_ICONS[i]}></path></svg></span>
+              <span class="lbl">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container grid2 contact-inner">
+        <div class="stack-lg start">
+          <h2 class="contact-title">{c.contact.title}</h2>
+          <p class="body">{c.contact.lead}</p>
+          <a href={`mailto:${contact.email}`} class="btn btn--dark">{c.contact.button} <span aria-hidden="true">{c.arrow}</span></a>
+        </div>
+        <div class="rows">
+          <div class="row"><span class="k">{c.contact.business}</span><a href={`mailto:${contact.email}`} class="v mono">{contact.email}</a></div>
+          <div class="row"><span class="k">{c.contact.phone}</span><span class="v mono phones">{contact.phones.map((p) => <a href={`tel:${p}`}>{p}</a>)}</span></div>
+          <div class="row"><span class="k">{c.contact.office}</span><span class="v addr">{c.contact.address}</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+  <script is:inline src="/sutric-energy-flow.js" defer></script>
+</Base>
+
+<style>
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); }
+  .stack { display: flex; flex-direction: column; gap: 22px; }
+  .stack-sm { display: flex; flex-direction: column; gap: 14px; }
+  .stack-lg { display: flex; flex-direction: column; gap: 28px; }
+  .start { align-items: flex-start; }
+  .sec-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 56px; }
+  .sec-head.bordered { padding-top: 56px; border-top: 1px solid var(--line-2); margin-bottom: 44px; }
+  .sec-head.narrow { max-width: 760px; }
+
+  .hero { position: relative; background: var(--navy) radial-gradient(ellipse 70% 55% at 50% 72%, rgba(61,130,240,.22), transparent 70%); color: var(--on-dark); overflow: hidden; }
+  .hero-mark { position: absolute; top: calc((100svh - 76px) / 2); left: 50%; transform: translate(-50%, -50%); width: min(70vw, 980px); height: auto; opacity: .045; pointer-events: none; }
+  .hero-inner { position: relative; padding-block: 0 clamp(80px, 9vw, 120px); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero-top { min-height: calc(100svh - 76px); width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 3.5vh, 48px); padding-block: 48px; }
+  .hero h1 { font-size: clamp(44px, 8vw, 140px); line-height: 1.05; font-weight: 700; text-transform: uppercase; text-wrap: balance; }
+  html[lang='en'] .hero h1 { font-size: clamp(36px, 6vw, 104px); font-style: italic; letter-spacing: -0.03em; }
+  .hero h1 span { color: var(--bright); }
+  .lead { max-width: 1000px; font-size: clamp(18px, 1.7vw, 30px); font-weight: 300; color: var(--on-dark-3); line-height: 1.75; text-wrap: balance; }
+  .lead span { text-decoration: underline; text-decoration-color: var(--bright); text-decoration-thickness: 2px; text-underline-offset: 10px; }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+  .flow { width: 100%; max-width: 1320px; margin-top: 24px; min-height: 200px; }
+  .marquee { border-top: 1px solid rgba(244,238,228,.12); background: var(--navy-2); overflow: hidden; direction: ltr; }
+  .track { display: flex; width: max-content; animation: sutricMarquee 38s linear infinite; }
+  .m { display: inline-flex; align-items: center; gap: 28px; padding: 22px 28px; font-size: 18px; font-weight: 500; color: var(--on-dark); white-space: nowrap; }
+  .m i { width: 8px; height: 8px; background: var(--amber); border-radius: 50%; }
+
+  .about { padding: 120px 0; background: var(--paper); }
+  .about-top { gap: 72px; align-items: end; }
+  .body-lg { font-size: 19px; color: var(--ink-2); line-height: 1.75; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips span { padding: 10px 18px; background: var(--white); border: 1px solid var(--line); font-size: 15px; font-weight: 600; }
+  .vision { margin-top: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); background: var(--navy); color: var(--on-dark); }
+  .v1 { padding: 44px; display: flex; flex-direction: column; gap: 16px; border-inline-end: 1px solid rgba(244,238,228,.12); }
+  .v1 p { font-size: clamp(20px, 2vw, 26px); font-weight: 500; line-height: 1.5; text-wrap: pretty; }
+  .v2 { padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 18px; background: var(--navy-2); }
+  .v2 p { font-size: clamp(18px, 1.7vw, 22px); font-weight: 300; line-height: 1.6; color: var(--on-dark-2); }
+  .v2 span { font-size: 14px; font-weight: 600; color: var(--amber); }
+
+  .services { padding: 0 0 120px; background: var(--paper); }
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); grid-auto-rows: minmax(300px, auto); gap: 20px; }
+  .svc { padding: 40px; display: flex; flex-direction: column; gap: 16px; transition: transform .25s; }
+  .svc:hover { transform: translateY(-4px); }
+  .svc h3 { font-size: 30px; font-weight: 700; line-height: 1.2; }
+  .svc p { font-size: 16px; line-height: 1.7; }
+  .svc-1 { grid-row: span 2; background: var(--navy); color: var(--on-dark); padding: 44px; gap: 20px; }
+  .svc-1 h3 { font-size: clamp(28px, 3vw, 40px); }
+  .svc-1 p { font-size: 17px; color: var(--on-dark-2); max-width: 480px; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid rgba(127,178,255,.4); color: var(--on-dark-2); white-space: nowrap; }
+  .svc-1 ul { list-style: none; margin: auto 0 0; padding: 0; border-top: 1px solid rgba(244,238,228,.16); }
+  .svc-1 li { display: flex; align-items: center; gap: 14px; padding: 18px 0; border-bottom: 1px solid rgba(244,238,228,.16); font-size: 18px; font-weight: 500; }
+  .svc-1 li i { width: 8px; height: 8px; flex: none; background: var(--amber); transform: rotate(45deg); }
+  .svc-2 { background: var(--white); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 150px; gap: 24px; align-items: center; }
+  .svc-2 p { color: var(--ink-2); }
+  .svc-2 svg { color: var(--blue); justify-self: center; }
+  .svc-3 { background: var(--blue); color: var(--white); }
+  .svc-3 p { color: var(--on-dark-3); }
+  .end { display: flex; justify-content: flex-end; }
+  .arrow { font-size: 28px; color: var(--amber); }
+
+  .caps { padding: 120px 0; background: var(--white); border-top: 1px solid var(--line); }
+  .caps-inner { gap: 64px; align-items: center; }
+  .cap-list { border-top: 1px solid var(--line); }
+  .cap { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .cap strong { font-size: 18px; color: var(--blue); }
+  .cap span { font-size: 16px; color: var(--ink-2); line-height: 1.7; }
+  .cap-img { background: var(--paper); border: 1px solid var(--line); padding: 4px; }
+
+  .ind { padding: 120px 0; background: var(--paper); }
+  .ind-grid, .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px; }
+  .card { background: var(--white); border: 1px solid var(--line); border-top: 4px solid; padding: 32px 30px 36px; display: flex; flex-direction: column; gap: 16px; transition: transform .25s; }
+  .card:hover { transform: translateY(-4px); }
+  .card h3 { font-size: 22px; font-weight: 700; line-height: 1.3; }
+  .card p { font-size: 16px; color: var(--ink-2); line-height: 1.7; }
+
+  .how { padding: 120px 0; background: var(--navy); color: var(--on-dark); }
+  .how .sec-head { margin-bottom: 64px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .step { position: relative; padding: 36px 32px 40px; border-top: 2px solid rgba(127,178,255,.35); display: flex; flex-direction: column; gap: 16px; }
+  .step.first { border-top-color: var(--amber); }
+  .step i { position: absolute; top: -7px; inset-inline-start: 0; width: 12px; height: 12px; background: var(--amber); }
+  .step .n { font-family: var(--mono); font-size: 56px; font-weight: 500; line-height: 1; color: rgba(127,178,255,.5); }
+  .step h3 { font-size: 26px; font-weight: 700; }
+  .step p { font-size: 16px; color: var(--on-dark-2); line-height: 1.7; }
+  .works { margin-top: 64px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; padding: 28px 32px; background: var(--navy-2); border: 1px solid rgba(244,238,228,.1); }
+  .works > span { font-size: 15px; font-weight: 600; color: var(--on-dark-2); }
+  .brands { display: flex; gap: 12px; flex-wrap: wrap; }
+  .brands span { padding: 10px 22px; border: 1px solid rgba(244,238,228,.22); font-size: 18px; font-weight: 700; }
+
+  .why { padding: 120px 0; background: var(--paper); }
+  .why-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  .why-card { background: var(--white); border: 1px solid var(--line); padding: 32px 30px 36px; display: flex; flex-direction: column; gap: 28px; min-height: 220px; transition: background .25s, color .25s; }
+  .why-card:hover { background: var(--navy); color: var(--on-dark); }
+  .ic { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--amber); color: var(--amber-2); }
+  .lbl { margin-top: auto; font-size: 24px; font-weight: 700; line-height: 1.3; }
+
+  .contact { background: var(--amber); color: var(--navy); }
+  .contact-inner { padding-block: 110px; gap: 56px; align-items: center; }
+  .contact-title { font-size: clamp(36px, 5vw, 68px); font-weight: 700; line-height: 1.1; letter-spacing: var(--track); text-wrap: balance; }
+  .body { font-size: 18px; line-height: 1.7; max-width: 520px; }
+  .rows { border-top: 1px solid rgba(11,30,53,.25); }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(11,30,53,.25); }
+  .k { font-size: 16px; font-weight: 600; flex: none; white-space: nowrap; }
+  .v { min-width: 0; color: var(--navy); text-decoration: none; }
+  .mono { font-family: var(--mono); font-size: 18px; direction: ltr; white-space: nowrap; }
+  .phones { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
+  .phones a { color: var(--navy); text-decoration: none; }
+  .addr { font-size: 17px; font-weight: 500; text-align: end; }
+  @media (max-width: 560px) { .svc-2 { grid-template-columns: 1fr; } .cap { grid-template-columns: 1fr; gap: 6px; } }
+</style>

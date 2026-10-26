@@ -1,0 +1,19 @@
+---
+import { t, type Lang } from '../i18n/content';
+interface Props { lang: Lang }
+const c = t(Astro.props.lang);
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container inner">
+    <img src="/images/logo-white.png" alt={c.meta.title} />
+    <span>© {year} {c.footer}</span>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--navy); color: var(--on-dark-2); }
+  .inner { padding-block: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  img { height: 24px; width: auto; }
+  span { font-size: 14px; }
+</style>

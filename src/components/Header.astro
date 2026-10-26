@@ -1,0 +1,31 @@
+---
+import { t, type Lang } from '../i18n/content';
+interface Props { lang: Lang }
+const c = t(Astro.props.lang);
+---
+<header class="header">
+  <div class="container inner">
+    <a href={c.home} class="logo" aria-label={c.meta.title}><img src="/images/logo-white.png" alt={c.meta.title} /></a>
+    <nav aria-label="Main">
+      {c.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a href={c.switchHref} class="lang" hreflang={c.switchLang} lang={c.switchLang}>{c.switchLabel}</a>
+    <a href="#contact" class="cta">{c.cta} <span aria-hidden="true">{c.arrow}</span></a>
+  </div>
+</header>
+
+<style>
+  .header { position: sticky; top: 0; z-index: 20; background: rgba(11,30,53,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(244,238,228,.1); }
+  .inner { max-width: none; padding-inline: clamp(24px, 4vw, 72px); height: 84px; display: flex; align-items: center; gap: 36px; }
+  .logo img { height: 42px; width: auto; }
+  nav { display: flex; gap: 36px; flex: 1; flex-wrap: wrap; }
+  nav a { font-size: 16px; font-weight: 500; color: var(--on-dark-2); text-decoration: none; white-space: nowrap; }
+  nav a:hover { color: var(--white); }
+  .lang { font-size: 14px; font-weight: 600; color: var(--on-dark); text-decoration: none; padding: 8px 14px; border: 1px solid rgba(244,238,228,.28); white-space: nowrap; flex: none; }
+  .lang:hover { border-color: var(--on-dark); color: var(--on-dark); }
+  .lang[lang='ar'] { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+  .lang[lang='en'] { font-family: 'IBM Plex Sans', sans-serif; }
+  .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 42px; padding: 8px 20px; background: var(--amber); color: var(--navy); font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; flex: none; }
+  .cta:hover { background: #F0D9B3; color: var(--navy); }
+  @media (max-width: 960px) { nav { display: none; } .inner { gap: 12px; height: 72px; } .logo { margin-inline-end: auto; } .logo img { height: 34px; } }
+</style>
