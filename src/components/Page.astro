@@ -20,11 +20,11 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
           <h1>{c.hero.title1} <span>{c.hero.title2}</span></h1>
           <p class="lead"><span>{c.hero.lead}</span></p>
           <div class="actions">
-            <a href="#services" class="btn btn--light">{c.hero.primary} <span aria-hidden="true">{c.arrow}</span></a>
+            <a href="#services" class="btn btn--light">{c.hero.primary}<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" class="arr-ico" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg></a>
             <a href="#contact" class="btn btn--ghost">{c.hero.secondary}</a>
           </div>
         </div>
-        <div class="flow"><sutric-energy-flow lang={lang}></sutric-energy-flow></div>
+        <div class="flow"><sutric-flows lang={lang}></sutric-flows></div>
       </div>
       <div class="marquee" aria-hidden="true">
         <div class="track">
@@ -64,26 +64,53 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
           <div class="eyebrow">{c.services.eyebrow}</div>
           <h2 class="h2">{c.services.title}</h2>
         </div>
-        <div class="svc-grid">
-          <article class="svc svc-1">
-            <div><span class="tag">{c.services.s1.tag}</span></div>
-            <h3>{c.services.s1.title}</h3>
-            <p>{c.services.s1.text}</p>
-            <ul>{c.services.s1.points.map((pt) => <li><i></i>{pt}</li>)}</ul>
-          </article>
-          <article class="svc svc-2">
-            <div class="stack-sm">
-              <h3>{c.services.s2.title}</h3>
-              <p>{c.services.s2.text}</p>
+        <div class="svc-list">
+          <article class="svc">
+            <div class="svc-head"><h3>{c.services.s0.title}</h3></div>
+            <div class="svc-body">
+              <p>{c.services.s0.text}</p>
+              <div class="svc-note"><i></i>{c.services.s0.note}</div>
             </div>
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6 M10 21.5h4 M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.5.4.8 1 .8 1.7V18h6v-2c0-.7.3-1.3.8-1.7A6.5 6.5 0 0 0 12 2.5z"></path><path d="M12 6.5v3l2 1.5" stroke="#B8925A"></path></svg>
           </article>
-          <article class="svc svc-3">
-            <div class="end"><span class="arrow">{c.arrow}</span></div>
-            <h3>{c.services.s3.title}</h3>
-            <p>{c.services.s3.text}</p>
+          <article class="svc">
+            <div class="svc-head"><h3>{c.services.s1.title}</h3></div>
+            <div class="svc-body">
+              <p>{c.services.s1.text}</p>
+              <div class="svc-links">{c.services.s1.points.map((pt) => <a href={pt.href}><span class="svc-lbl">{pt.status && <em class={pt.ready ? 'badge badge--ready' : 'badge badge--soon'}>{pt.status}</em>}<span>{pt.label}</span></span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" class="svc-ico" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg></a>)}</div>
+            </div>
+          </article>
+          <article class="svc">
+            <div class="svc-head"><h3>{c.services.s2.title}</h3></div>
+            <div class="svc-body"><p>{c.services.s2.text}</p></div>
+          </article>
+          <article class="svc">
+            <div class="svc-head"><h3>{c.services.s3.title}</h3></div>
+            <div class="svc-body"><p>{c.services.s3.text}</p><a class="svc-cta" href="#contact">{c.cta}<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" class="svc-ico" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg></a></div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="solutions" class="sols">
+      <div class="container">
+        <div class="stack-sm sols-head">
+          <div class="eyebrow">{c.solutions.eyebrow}</div>
+          <h2 class="h2">{c.solutions.title}</h2>
+        </div>
+        {c.solutions.items.map((s) => (
+          <article id={'sol-' + s.id} class="sol">
+            <div class="sol-top">
+              <div class="stack-sm"><div class="sol-meta"><em class={s.ready ? 'sbadge sbadge--ready' : 'sbadge sbadge--soon'}>{s.status}</em></div><h3>{s.title}</h3></div>
+              <p>{s.desc}</p>
+            </div>
+            <div class="sol-flow"><sutric-flows lang={lang} flow={s.id} bare=""></sutric-flows></div>
+            {s.shots && <div class="sol-shots">{s.shots.map((sh) => <figure><div class="sol-shot"><img src={sh.src} alt={sh.cap} loading="lazy" /></div><figcaption>{sh.cap}</figcaption></figure>)}</div>}
+            <div class="sol-bottom">
+              <div class="sol-col"><div class="sol-label">{c.solutions.who}</div><div class="sol-chips">{s.who.map((w) => <span>{w}</span>)}</div></div>
+              <div class="sol-col"><div class="sol-label">{c.solutions.ben}</div><ul>{s.benefits.map((b) => <li><i></i>{b}</li>)}</ul></div>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -99,23 +126,6 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
           </div>
         </div>
         <div class="cap-img"><img src="/images/energy-management-dashboard.jpg" alt={c.caps.imgAlt} loading="lazy" /></div>
-      </div>
-    </section>
-
-    <section id="industries" class="ind">
-      <div class="container">
-        <div class="sec-head narrow">
-          <div class="eyebrow">{c.ind.eyebrow}</div>
-          <h2 class="h2">{c.ind.title}</h2>
-        </div>
-        <div class="ind-grid">
-          {c.ind.items.map((x, i) => (
-            <article class="card" style={`border-top-color:${indColors[i]}`}>
-              <h3>{x.title}</h3>
-              <p>{x.text}</p>
-            </article>
-          ))}
-        </div>
       </div>
     </section>
 
@@ -164,18 +174,19 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
         <div class="stack-lg start">
           <h2 class="contact-title">{c.contact.title}</h2>
           <p class="body">{c.contact.lead}</p>
-          <a href={`mailto:${contact.email}`} class="btn btn--dark">{c.contact.button} <span aria-hidden="true">{c.arrow}</span></a>
+          <a href={`mailto:${contact.email}`} class="btn btn--dark">{c.contact.button}<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" class="arr-ico" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg></a>
         </div>
         <div class="rows">
-          <div class="row"><span class="k">{c.contact.business}</span><a href={`mailto:${contact.email}`} class="v mono">{contact.email}</a></div>
-          <div class="row"><span class="k">{c.contact.phone}</span><span class="v mono phones">{contact.phones.map((p) => <a href={`tel:${p}`}>{p}</a>)}</span></div>
-          <div class="row"><span class="k">{c.contact.office}</span><span class="v addr">{c.contact.address}</span></div>
+          <div class="row"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z M3 6l9 7 9-7"></path></svg>{c.contact.business}</span><a href={`mailto:${contact.email}`} class="v mono">{contact.email}</a></div>
+          <div class="row"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>{c.contact.phone}</span><span class="v mono phones">{contact.phones.map((p) => <a href={`tel:${p}`}>{p}</a>)}</span></div>
+          <div class="row"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V21h-4z"/></svg>{c.contact.linkedin}</span><a href="https://www.linkedin.com/company/sutric-advanced-technologies/" target="_blank" rel="noopener" class="v li">Sutric Advanced Technologies</a></div>
+          <div class="row"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg>{c.contact.office}</span><span class="v addr">{c.contact.address}</span></div>
         </div>
       </div>
     </section>
   </main>
   <Footer lang={lang} />
-  <script is:inline src="/sutric-energy-flow.js" defer></script>
+  <script is:inline src="/sutric-flows.js" defer></script>
 </Base>
 
 <style>
@@ -189,17 +200,32 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
   .sec-head.narrow { max-width: 760px; }
 
   .hero { position: relative; background: var(--navy) radial-gradient(ellipse 70% 55% at 50% 72%, rgba(61,130,240,.22), transparent 70%); color: var(--on-dark); overflow: hidden; }
-  .hero-mark { position: absolute; top: calc((100svh - 76px) / 2); left: 50%; transform: translate(-50%, -50%); width: min(70vw, 980px); height: auto; opacity: .045; pointer-events: none; }
+  .hero-mark { position: absolute; top: calc((100svh - var(--header-h)) / 2); left: 50%; transform: translate(-50%, -50%); width: min(70vw, 85svh, 980px); height: auto; opacity: .045; pointer-events: none; }
   .hero-inner { position: relative; padding-block: 0 clamp(80px, 9vw, 120px); display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .hero-top { min-height: calc(100svh - 76px); width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(28px, 3.5vh, 48px); padding-block: 48px; }
-  .hero h1 { font-size: clamp(44px, 8vw, 140px); line-height: 1.05; font-weight: 700; text-transform: uppercase; text-wrap: balance; }
-  html[lang='en'] .hero h1 { font-size: clamp(36px, 6vw, 104px); font-style: italic; letter-spacing: -0.03em; }
-  html[lang='ar'] .hero h1 { line-height: 1.4; }
+  .hero-top { min-height: calc(100svh - var(--header-h)); width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px, 3.5svh, 44px); padding-block: clamp(24px, 5svh, 48px); }
+  .hero h1 { font-size: clamp(48px, min(9vw, 17svh), 190px); line-height: 1.05; font-weight: 700; text-transform: uppercase; text-wrap: balance; }
+  html[lang='en'] .hero h1 { font-size: clamp(38px, min(7vw, 14svh), 150px); font-style: italic; letter-spacing: -0.03em; }
   .hero h1 span { color: var(--bright); }
-  .lead { max-width: 1000px; font-size: clamp(18px, 1.7vw, 30px); font-weight: 300; color: var(--on-dark-3); line-height: 1.75; text-wrap: balance; }
+  .lead { max-width: 1200px; font-size: clamp(19px, min(1.9vw, 3.5svh), 36px); font-weight: 300; color: var(--on-dark-3); line-height: 1.75; text-wrap: balance; }
   .lead span { text-decoration: underline; text-decoration-color: var(--bright); text-decoration-thickness: 2px; text-underline-offset: 10px; }
-  .actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
-  .flow { width: 100%; max-width: 1320px; margin-top: 24px; min-height: 200px; }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+  .flow { width: 100%; max-width: min(1320px, calc((100svh - var(--header-h) - 128px) * 1.5 + 80px)); margin-top: 24px; min-height: 200px; box-sizing: border-box; padding: clamp(20px, 3vw, 40px); background: rgba(14,38,66,.72); border: 1px solid rgba(127,178,255,.22); border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+  .sols { padding: 110px 0 40px; background: var(--navy); color: #F4EEE4; }
+  .sols .eyebrow { color: #7FB2FF; }
+  .sols-head { margin-bottom: 24px; }
+  .sol { display: flex; flex-direction: column; gap: 36px; padding: 72px 0 88px; border-top: 2px solid rgba(227,199,154,.45); }
+  .sol-top, .sol-bottom { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 64px; }
+  .sol-top { align-items: end; }
+  .sol h3 { margin: 0; font-size: clamp(26px, 2.8vw, 38px); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+  .sol-top p { margin: 0; font-size: 18px; color: #BFCBDB; line-height: 1.75; text-wrap: pretty; }
+  .sol-flow { box-sizing: border-box; padding: clamp(16px, 2.5vw, 32px); background: rgba(14,38,66,.72); border: 1px solid rgba(127,178,255,.22); border-radius: 16px; min-height: 200px; }
+  .sol-col { display: flex; flex-direction: column; gap: 18px; }
+  .sol-label { font-size: 14px; font-weight: 700; color: #7FB2FF; }
+  .sol-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .sol-chips span { padding: 9px 16px; border: 1px solid rgba(127,178,255,.35); font-size: 15px; font-weight: 500; }
+  .sol ul { list-style: none; margin: 0; padding: 0; }
+  .sol li { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(244,238,228,.12); font-size: 16px; font-weight: 500; }
+  .sol li i { width: 8px; height: 8px; flex: none; background: #E3C79A; transform: rotate(45deg); }
   .marquee { border-top: 1px solid rgba(244,238,228,.12); background: var(--navy-2); overflow: hidden; direction: ltr; }
   .track { display: flex; width: max-content; animation: sutricMarquee 38s linear infinite; }
   .m { display: inline-flex; align-items: center; gap: 28px; padding: 22px 28px; font-size: 18px; font-weight: 500; color: var(--on-dark); white-space: nowrap; }
@@ -218,23 +244,39 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
   .v2 span { font-size: 14px; font-weight: 600; color: var(--amber); }
 
   .services { padding: 0 0 120px; background: var(--paper); }
-  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); grid-auto-rows: minmax(300px, auto); gap: 20px; }
-  .svc { padding: 40px; display: flex; flex-direction: column; gap: 16px; transition: transform .25s; }
-  .svc:hover { transform: translateY(-4px); }
-  .svc h3 { font-size: 30px; font-weight: 700; line-height: 1.2; }
-  .svc p { font-size: 16px; line-height: 1.7; }
-  .svc-1 { grid-row: span 2; background: var(--navy); color: var(--on-dark); padding: 44px; gap: 20px; }
-  .svc-1 h3 { font-size: clamp(28px, 3vw, 40px); }
-  .svc-1 p { font-size: 17px; color: var(--on-dark-2); max-width: 480px; }
-  .tag { display: inline-block; font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid rgba(127,178,255,.4); color: var(--on-dark-2); white-space: nowrap; }
-  .svc-1 ul { list-style: none; margin: auto 0 0; padding: 0; border-top: 1px solid rgba(244,238,228,.16); }
-  .svc-1 li { display: flex; align-items: center; gap: 14px; padding: 18px 0; border-bottom: 1px solid rgba(244,238,228,.16); font-size: 18px; font-weight: 500; }
-  .svc-1 li i { width: 8px; height: 8px; flex: none; background: var(--amber); transform: rotate(45deg); }
-  .svc-2 { background: var(--white); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 150px; gap: 24px; align-items: center; }
-  .svc-2 p { color: var(--ink-2); }
-  .svc-2 svg { color: var(--blue); justify-self: center; }
-  .svc-3 { background: var(--blue); color: var(--white); }
-  .svc-3 p { color: var(--on-dark-3); }
+  .services .sec-head { margin-bottom: 56px; }
+  .svc-list { border-bottom: 1px solid #D6C9B6; }
+  .svc { display: flex; flex-wrap: wrap; gap: 24px 48px; padding: 48px 0; border-top: 1px solid #D6C9B6; }
+  .svc-head { flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .svc h3 { font-size: clamp(26px, 2.6vw, 36px); font-weight: 700; line-height: 1.2; color: var(--navy); text-wrap: balance; }
+  .svc-body { flex: 1.6 1 440px; display: flex; flex-direction: column; gap: 28px; align-items: flex-start; }
+  .svc-body p { font-size: 18px; color: var(--ink-2); line-height: 1.75; max-width: 640px; }
+  .svc-links { align-self: stretch; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+  .svc-links a { display: flex; align-items: center; gap: 14px; padding: 20px 22px; background: var(--white); border: 1px solid var(--line); font-size: 16px; font-weight: 600; line-height: 1.45; color: var(--navy); text-decoration: none; transition: background .2s, color .2s, border-color .2s; }
+  .svc-links a:hover { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+  .svc-lbl { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .badge { font-style: normal; font-size: 12px; font-weight: 700; padding: 3px 8px; }
+  .badge--ready { background: #E3C79A; color: var(--navy); }
+  .badge--soon { padding: 2px 8px; border: 1px solid #B8925A; color: #8A6A3C; }
+  .svc-links a:hover .badge--soon { color: #E3C79A; }
+  .sol-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 28px 20px; align-items: start; }
+  .sol-shots figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .sol-shot { background: #F4F6F8; border: 1px solid rgba(127,178,255,.22); border-radius: 12px; overflow: hidden; }
+  .sol-shot img { width: 100%; height: auto; display: block; }
+  .sol-shots figcaption { font-size: 15px; font-weight: 500; color: var(--on-dark-2); line-height: 1.5; }
+  .sol-meta { display: flex; align-items: center; gap: 14px; }
+  .sbadge { font-style: normal; font-size: 13px; font-weight: 700; padding: 4px 10px; }
+  .sbadge--ready { background: #E3C79A; color: var(--navy); }
+  .sbadge--soon { padding: 3px 10px; border: 1px solid rgba(227,199,154,.6); color: #E3C79A; }
+  .svc-ico { flex: none; color: #B8925A; }
+  .arr-ico { flex: none; }
+  [dir="rtl"] .svc-ico, [dir="rtl"] .arr-ico { transform: scaleX(-1); }
+  .svc-note { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--white); border: 1px solid var(--line); font-size: 15px; font-weight: 600; color: var(--navy); }
+  .svc-note i { width: 7px; height: 7px; flex: none; background: #B8925A; }
+  .svc-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 700; color: var(--blue); text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid #B8925A; }
+  .svc-cta:hover { color: var(--navy); }
+  .li { display: inline-flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 600; direction: ltr; white-space: nowrap; }
+  .li:hover { color: var(--blue); }
   .end { display: flex; justify-content: flex-end; }
   .arrow { font-size: 28px; color: var(--amber); }
 
@@ -280,11 +322,11 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
   .body { font-size: 18px; line-height: 1.7; max-width: 520px; }
   .rows { border-top: 1px solid rgba(11,30,53,.25); }
   .row { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(11,30,53,.25); }
-  .k { font-size: 16px; font-weight: 600; flex: none; white-space: nowrap; }
+  .k { font-size: 16px; font-weight: 600; flex: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 12px; }
   .v { min-width: 0; color: var(--navy); text-decoration: none; }
   .mono { font-family: var(--mono); font-size: 18px; direction: ltr; white-space: nowrap; }
   .phones { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
   .phones a { color: var(--navy); text-decoration: none; }
   .addr { font-size: 17px; font-weight: 500; text-align: end; }
-  @media (max-width: 560px) { .svc-2 { grid-template-columns: 1fr; } .cap { grid-template-columns: 1fr; gap: 6px; } }
+  @media (max-width: 560px) { .cap { grid-template-columns: 1fr; gap: 6px; } }
 </style>

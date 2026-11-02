@@ -5,12 +5,14 @@
   --amber: #E3C79A; --amber-2: #B8925A;
   --font: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --max: 1440px; --gutter: 32px;
+  --max: none; --gutter: clamp(20px, 5vw, 96px);
   --track: 0; --label-track: 0;
+  --header-h: 88px;
 }
+@media (max-width: 960px) { :root { --header-h: 72px; } }
 html[lang='en'] { --font: 'IBM Plex Sans', 'Segoe UI', sans-serif; --track: -0.02em; --label-track: 0.08em; }
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; background: var(--navy); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); -webkit-text-size-adjust: 100%; background: var(--navy); }
 body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--paper); line-height: 1.6; overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 h1, h2, h3, p { margin: 0; }
