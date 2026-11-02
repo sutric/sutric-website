@@ -30,5 +30,5 @@ const c = t(Astro.props.lang);
   .cta:hover { background: #F0D9B3; color: var(--navy); }
   @media (max-width: 960px) { nav { display: none; } .inner { gap: 12px; } .logo { margin-inline-end: auto; } .logo img { height: 34px; } .lang, .cta { min-height: 40px; font-size: 14px; } }
   .arr-ico { flex: none; }
-  [dir="rtl"] .arr-ico { transform: scaleX(-1); }
+  :global([dir="rtl"]) .arr-ico { transform: scaleX(-1); }
 </style>

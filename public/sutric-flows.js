@@ -187,7 +187,7 @@ const BLD = '<rect x="8" y="4" width="36" height="50" fill="none" stroke="' + IN
 const ROWY = (j) => PT + 176 + j * 74, BX = PL + 24, BW = PW - 48;
 
 const flow2 = {
-  id: 'hybrid', hold: 32000, text: T2,
+  id: 'hybrid', hold: 16000, text: T2,
   svg(lg) {
     const t = T2[lg], rtl = lg === 'ar';
     const X = (x) => rtl ? 1200 - x : x, A = rtl ? 'end' : 'start', AE = rtl ? 'start' : 'end', R = (x, w) => rtl ? 1200 - x - w : x;
@@ -341,7 +341,7 @@ const ICON3 = {
 };
 
 const flow3 = {
-  id: 'residential', hold: 28000, text: T3,
+  id: 'residential', hold: 14000, text: T3,
   svg(lg) {
     const t = T3[lg], rtl = lg === 'ar';
     const X = (x) => rtl ? 1200 - x : x, A = rtl ? 'end' : 'start', R = (x, w) => rtl ? 1200 - x - w : x;
@@ -458,7 +458,7 @@ const flow3 = {
 };
 
 const FLOWS = [flow1, flow2, flow3];
-const HOLD = 16000;
+const HOLD = 8000;
 
 const css = (lg) => `
 :host{display:block;width:100%;direction:${lg === 'ar' ? 'rtl' : 'ltr'};font-family:${FONT[lg]};color:${INK}}
@@ -472,8 +472,10 @@ const css = (lg) => `
 .head{width:100%}
 .head[hidden]{display:none}
 .ttl{display:block;margin:0;width:100%;max-width:none;font-size:clamp(20px,2vw,28px)!important;line-height:1.35!important;font-weight:700;letter-spacing:0!important;text-transform:none;white-space:normal}
-p{margin:0;max-width:820px;letter-spacing:0;font-size:clamp(14px,1.1vw,17px);line-height:1.6;color:${MUTED};text-wrap:pretty}
+p{margin:0;max-width:820px;letter-spacing:0;font-size:clamp(15px,1.1vw,21px);line-height:1.6;color:${MUTED};text-wrap:pretty}
 .stage{transition:opacity .5s}
+.link{cursor:pointer}
+.link:focus-visible{outline:3px solid rgba(227,199,154,.6);outline-offset:6px;border-radius:8px}
 svg{width:100%;height:auto;display:block;overflow:visible;font-family:${FONT[lg]};direction:ltr}
 .dash{stroke-dasharray:3 11;animation:dash 1.1s linear infinite}
 .data{stroke-dasharray:8 8;animation:dash 1.6s linear infinite}
@@ -505,6 +507,14 @@ class SutricSolutions extends HTMLElement {
       <div class="stage" data-stage></div>
       ${multi ? `<div class="tabs" role="tablist">${this.list.map((f, i) => `<button class="tab" role="tab" data-i="${i}" aria-label="${f.text[lg].title}" title="${f.text[lg].title}"><i></i></button>`).join('')}</div>` : ''}`;
     this.shadowRoot.querySelectorAll('.tab').forEach((b) => b.onclick = () => this.show(+b.dataset.i));
+    if (multi) {
+      const open = () => { location.hash = 'sol-' + this.list[this.idx].id; };
+      this.shadowRoot.querySelectorAll('.head, .stage').forEach((el) => {
+        el.classList.add('link'); el.tabIndex = 0; el.setAttribute('role', 'link');
+        el.onclick = open;
+        el.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } };
+      });
+    }
     this.show(this.idx, true);
   }
   show(i, instant) {
