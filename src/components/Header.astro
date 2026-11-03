@@ -15,12 +15,12 @@ const c = t(Astro.props.lang);
 </header>
 
 <style>
-  .header { position: sticky; top: 0; z-index: 20; background: rgba(11,30,53,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(244,238,228,.1); }
+  .header { position: sticky; top: 0; z-index: 20; background: rgba(6,17,31,.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(244,238,228,.08); }
   .inner { height: var(--header-h); display: flex; align-items: center; gap: clamp(24px, 3vw, 56px); }
   .logo { flex: none; }
   .logo img { height: clamp(36px, 3vw, 52px); width: auto; max-width: none; }
   nav { display: flex; justify-content: center; gap: clamp(24px, 3.2vw, 64px); flex: 1; flex-wrap: wrap; }
-  nav a { font-size: clamp(15px, 1vw, 18px); font-weight: 500; color: var(--on-dark-2); text-decoration: none; white-space: nowrap; }
+  nav a { font-size: clamp(15px, 1vw, 18px); font-weight: 500; color: #9FB0C6; text-decoration: none; white-space: nowrap; }
   nav a:hover { color: var(--white); }
   .lang { display: inline-flex; align-items: center; min-height: 46px; font-size: 15px; font-weight: 600; color: var(--on-dark); text-decoration: none; padding: 8px 18px; border: 1px solid rgba(244,238,228,.28); white-space: nowrap; flex: none; }
   .lang:hover { border-color: var(--on-dark); color: var(--on-dark); }
