@@ -17,7 +17,7 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
       <div class="container hero-inner">
         <div class="hero-top">
           <img class="hero-mark" src="/images/sutric-mark-white.png" alt="" aria-hidden="true" />
-          <h1>{c.hero.title1} <span>{c.hero.title2}</span></h1>
+          <div class="hero-title"><img class="hero-mark-m" src="/images/sutric-mark-white.png" alt="" aria-hidden="true" /><h1>{c.hero.title1} <span>{c.hero.title2}</span></h1></div>
           <p class="lead"><span>{c.hero.lead}</span></p>
           <div class="actions">
             <a href="#services" class="btn btn--light">{c.hero.primary}<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" class="arr-ico" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg></a>
@@ -206,10 +206,14 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
   .hero h1 { font-size: clamp(48px, min(9vw, 17svh), 190px); line-height: 1.05; font-weight: 700; text-transform: uppercase; text-wrap: balance; }
   html[lang='en'] .hero h1 { font-size: clamp(38px, min(7vw, 14svh), 150px); font-style: italic; letter-spacing: -0.03em; }
   .hero h1 span { color: var(--bright); }
+  html[lang='ar'] .hero h1 { line-height: 1.4; }
+  .hero-title { --mk: min(80vw, 44svh, 440px); position: relative; isolation: isolate; width: 100%; min-height: var(--mk); display: flex; align-items: center; justify-content: center; }
+  .hero-mark-m { position: absolute; z-index: -1; top: 50%; left: 50%; width: var(--mk); height: auto; transform: translate(-50%, -50%); opacity: .045; pointer-events: none; }
   .lead { max-width: 1200px; font-size: clamp(19px, min(1.9vw, 3.5svh), 36px); font-weight: 300; color: var(--on-dark-3); line-height: 1.75; text-wrap: balance; }
   .lead span { text-decoration: underline; text-decoration-color: var(--bright); text-decoration-thickness: 2px; text-underline-offset: 10px; }
   .actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
   .flow { width: 100%; max-width: min(1320px, calc((100svh - var(--header-h) - 128px) * 1.5 + 80px)); margin-top: 24px; min-height: 200px; box-sizing: border-box; padding: clamp(20px, 3vw, 40px); background: rgba(14,38,66,.72); border: 1px solid rgba(127,178,255,.22); border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+  @media (max-width: 1099px) { .hero-mark { display: none; } }
   @media (min-width: 1100px) {
     .hero-inner { max-width: 1760px; display: grid; grid-template-columns: minmax(0, 11fr) minmax(0, 9fr); align-items: center; gap: clamp(40px, 4vw, 96px); min-height: calc(100svh - var(--header-h)); padding-block: clamp(32px, 6svh, 72px); text-align: start; }
     .hero-top { min-height: 0; width: fit-content; max-width: 100%; justify-self: center; align-items: flex-start; padding-block: 0; }
@@ -219,6 +223,8 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
     .actions { justify-content: flex-start; }
     .flow { max-width: none; margin-top: 0; padding: clamp(16px, 1.6vw, 32px); }
     .hero-mark { width: min(115%, 85svh); }
+    .hero-title { display: contents; }
+    .hero-mark-m { display: none; }
   }
   .sols { padding: 110px 0 40px; background: var(--navy); color: #F4EEE4; }
   .sols .eyebrow { color: #7FB2FF; }
@@ -357,5 +363,7 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
   .phones { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
   .phones a { color: var(--navy); text-decoration: none; }
   .addr { font-size: clamp(17px, 1.122vw, 21px); font-weight: 500; text-align: end; }
+  html[lang='ar'] .contact-title { line-height: 1.45; }
   @media (max-width: 560px) { .cap { grid-template-columns: 1fr; gap: 6px; } }
+  @media (max-width: 560px) { .row { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 0; } .phones { justify-content: flex-start; gap: 6px 20px; } .addr { text-align: start; } .li { white-space: normal; } }
 </style>
