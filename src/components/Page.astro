@@ -68,7 +68,13 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
             <div class="svc-head"><h3>{c.services.s0.title}</h3></div>
             <div class="svc-body">
               <p>{c.services.s0.text}</p>
-              <div class="svc-note"><i></i>{c.services.s0.note}</div>
+              <div class="svc-devices">{c.services.s0.devices.map((d) => <span>{d}</span>)}</div>
+              <div class="svc-steps"><span>{c.services.s0.steps}</span><span class="svc-result"><i></i>{c.services.s0.result}</span></div>
+              <div class="svc-project">
+                <div class="svc-project-label">{c.services.s0.project.label}</div>
+                <h4>{c.services.s0.project.title}</h4>
+                <ul>{c.services.s0.project.points.map((pt) => <li><i></i>{pt}</li>)}</ul>
+              </div>
             </div>
           </article>
           <article class="svc">
@@ -308,6 +314,17 @@ const indColors = ['#E3C79A', '#1F4E8C', '#B8925A', '#7FB2FF', '#0B1E35'];
   :global([dir="rtl"]) .svc-ico, :global([dir="rtl"]) .arr-ico { transform: scaleX(-1); }
   .svc-note { display: flex; align-items: center; gap: 10px; padding: 10px 16px; background: var(--white); border: 1px solid var(--line); font-size: clamp(15px, 0.99vw, 19px); font-weight: 600; color: var(--navy); }
   .svc-note i { width: 7px; height: 7px; flex: none; background: #B8925A; }
+  .svc-devices { display: flex; flex-wrap: wrap; gap: 10px; }
+  .svc-devices span { padding: 9px 16px; background: var(--paper); border: 1px solid var(--line); font-size: clamp(15px, 0.99vw, 19px); font-weight: 600; color: var(--navy); }
+  .svc-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; font-size: clamp(15px, 0.99vw, 19px); font-weight: 700; color: var(--blue); }
+  .svc-result { display: inline-flex; align-items: center; gap: 10px; color: var(--navy); }
+  .svc-result i { width: 10px; height: 10px; border-radius: 50%; background: #16A34A; }
+  .svc-project { align-self: stretch; max-width: 880px; display: flex; flex-direction: column; gap: 12px; padding: clamp(20px, 2vw, 32px); background: var(--navy); color: var(--on-dark); border-top: 3px solid var(--amber); border-radius: 12px; }
+  .svc-project-label { font-size: clamp(14px, 0.92vw, 17px); font-weight: 700; color: var(--amber); }
+  .svc-project h4 { margin: 0; font-size: clamp(20px, 1.5vw, 26px); font-weight: 700; line-height: 1.35; }
+  .svc-project ul { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .svc-project li { display: flex; align-items: baseline; gap: 12px; font-size: clamp(15px, 1vw, 19px); line-height: 1.6; color: var(--on-dark-3); }
+  .svc-project li i { flex: none; width: 8px; height: 8px; background: var(--amber); transform: translateY(-2px); }
   .svc-cta { display: inline-flex; align-items: center; gap: 12px; font-size: clamp(16px, 1.056vw, 20px); font-weight: 700; color: var(--blue); text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid #B8925A; }
   .svc-cta:hover { color: var(--navy); }
   .li { display: inline-flex; align-items: center; gap: 10px; font-size: clamp(17px, 1.122vw, 21px); font-weight: 600; direction: ltr; white-space: nowrap; }

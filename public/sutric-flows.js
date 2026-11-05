@@ -9,11 +9,11 @@ const MONO = "'IBM Plex Mono',monospace";
 const T1 = {
   en: { tab: 'Multi-site Meters', title: 'Multi-site Utility Energy Meters Management System', desc: 'Sutric gateways connected to utility meters to monitor and top up the credit of all sites from one platform.',
     site: 'Site', loc: 'Location', credit: 'Credit · kWh', status: 'Status', action: 'Action', topup: 'Top up', ok: 'Active', low: 'Low credit', busy: 'Topping up…', done: 'Topped up',
-    lowCount: 'Low credit', topups: 'Top-ups today', online: 'online', live: 'LIVE', gw: 'Sutric gateway', more: 'Scales to thousands of sites',
+    lowCount: 'Low credit', topups: 'Top-ups today', online: 'online', live: 'LIVE', gw: 'Sutric gateway', more: 'Supports thousands of sites',
     name: (i) => 'Site ' + (i + 1), locs: ['Khartoum', 'Omdurman', 'Port Sudan', 'Kassala', 'Wad Madani', 'El Obeid', 'Dongola'] },
   ar: { tab: 'عدادات المواقع المتعددة', title: 'نظام إدارة عدادات الطاقة للمؤسسات ذات المواقع المتعددة', desc: 'بوابات سوتريك متصلة بالعدادات لمراقبة رصيد جميع المواقع وشحنه من منصة واحدة.',
     site: 'الموقع', loc: 'المدينة', credit: 'الرصيد · ك.و.س', status: 'الحالة', action: 'إجراء', topup: 'شحن', ok: 'نشط', low: 'رصيد منخفض', busy: 'جارٍ الشحن…', done: 'تم الشحن',
-    lowCount: 'رصيد منخفض', topups: 'عمليات الشحن اليوم', online: 'متصل', live: 'مباشر', gw: 'بوابة سوتريك', more: 'قابل للتوسع لآلاف المواقع',
+    lowCount: 'رصيد منخفض', topups: 'عمليات الشحن اليوم', online: 'متصل', live: 'مباشر', gw: 'بوابة سوتريك', more: 'يدعم آلاف المواقع',
     name: (i) => 'الموقع ' + (i + 1), locs: ['الخرطوم', 'أم درمان', 'بورتسودان', 'كسلا', 'ود مدني', 'الأبيض', 'دنقلا'] },
 };
 const N = 7, PX0 = 250, PX1 = 950, PY0 = 200, PY1 = 540, TH = 250, RH = 34, CW = 154;
@@ -317,7 +317,7 @@ const T3 = {
     ac: 'AC unit', heater: 'Heater', fan: 'Fans', light: 'Lights',
     modes: { grid: 'Grid + Solar', sb: 'Solar + Battery', bat: 'Battery only' },
     ev: { start: 'Grid + solar — all loads on', off: 'Grid outage — battery mode: AC & heater switched off, fans & lights kept on', sunset: 'Sunset — battery supplying essential loads', on: 'Grid restored — AC & heater switched back on' } },
-  ar: { tab: 'الطاقة الشمسية السكنية', title: 'إدارة أنظمة الطاقة الشمسية السكنية', desc: 'تحكم ذكي في مصادر الطاقة والأحمال المنزلية.',
+  ar: { tab: 'الطاقة الشمسية المنزلية', title: 'إدارة أنظمة الطاقة الشمسية المنزلية', desc: 'تحكم ذكي في مصادر الطاقة والأحمال المنزلية.',
     grid: 'الشبكة', solar: 'الطاقة الشمسية', bat: 'البطاريات', ctl: 'نظام سوتريك المنزلي', home: 'المنزل', online: 'متصلة', outage: 'منقطعة', gen: 'تولّد', night: 'لا توجد شمس',
     charging: 'شحن', discharging: 'تفريغ', idle: 'خاملة', batL: 'البطارية', loadL: 'حمل المنزل', on: 'تشغيل', off: 'إيقاف', ess: 'أساسي', non: 'غير أساسي',
     ac: 'المكيف', heater: 'السخان', fan: 'المراوح', light: 'الإنارة',
