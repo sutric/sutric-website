@@ -1,7 +1,7 @@
 (() => {
 const BASE = (document.currentScript && document.currentScript.src) || location.href;
 const MARK = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABBCAYAAABhNaJ7AAAMJUlEQVR4AdxaCZAcZRV+r2dmd6d7ZqdnQzgChAoCBhMLBYXSEilJMKCgImUIgQI5TWJCiKJlKEUFsZAiGKiEq1C5IkehUAKh5EqJCHIrFQ6tSkQMCZVj5+pjNzPTz++fpDez0z0zPcluNmHqf/3//d77X7//6/f//R+j0UfgJ7IxZVkb93fs/KuOlRefXLvgOqUtZypZs2bu9QBYlrW/a3ffqlHXBhI6pr6hItJDHLsfsvWWlZ9WL/PLezUAIsVxMapeTyRn+w1qknOM+THXKgT09moAXFvulPaNr2GiokFYfjFg5U+qMbZfOgYAhti2C18BmqvHktDfX8GbP3V7O6JlQgd7IqfVK0cGAA2PocHvYmDxWORxID9lLAn9/TP1DdlWlu/pKZN9YqJrwReQn9ATeGqxWJzsM9oCUCqV9rXt/NEDdmE1Gvxxv+IelzO9KNx1f71fyZS5GCA8Uc8DGl+Kc/XLPq8lAM6WLQfF2LuBiV9CxSHU/Mp7VO7J9YZhbGj0SYj/Bd5WUGhqCgBCXte6Y/PRz2aTSDy09l7BlArcFFBoagqA627JVoUuQS0G7fGJWbsKEXtwo6Nwfgp43SA/VUTjsn/TFADx4m8zU9ZXDMsB65Nx4nM9ih+VlNh+g2XJ7i6CPx5oKGF8mkLdsdeHGCjYpdzPiXnYZw8RfZ+uZ+6EuJZCAXDd3CFArremEbhwGcDcljQympEyZ3SlMvekUqk3OZ3emM1m87uLPOLzA64R7ePUTYWZ+Up05USd3lZN4w3guz4vFACq8pu+QmPOLHckDXMOjCAAGqW77z6VytyNl/Rsh0/852CZf1VfJwDA4GBxMloWq1fyy2j0NWj8PP9+rPOKxGaR0B+i+MFMtkdySyaT6a/XDwBQKcuPiLiHQn49eu9VIewxY6XT6U0Uq14GEB6AEx4oPIks9MiblUplf9eoEAAASB2OgSIQAR7Jr1G5Ctqjkq6PW5es0tytFTpCPLp4h3O8Ge1YpFXosLX//eBWw+h7TMkaKQBAo4J/z8z3gvY4AJR/bJo50zTXGL3mHfrQVDgzXk9ll/aAP3Xq1M4nQjTCP5EHYyISiKwRfkzH5iJHQMeWUQENxsoxf4xd6p/nujMWuHZ+IdYU8+xi/qJcLmdCZczTqALg2kW1jriFWVtOnhpDeAmWo8uxO7G8K0E3WoUtJ481AqMGgFPMnY5BaD7WEZ8NNFKki4nP1mLxGQHZbmaMGgCsaWotHm/RHowHssCxsHFp5V0HhC7yyxb6oyIaFQAG8vlDhTwjgscKBDXnqJEILQYQ4lr5glPKXVoobDxcjSMR7Oy0yqgAIAk+Fx71gXYqYSbaS8w3dsW7/oHNmHMGCoXDdspQhEqjAkC1XHmBSLMiPL+lCiJC14jvlpgss6zceYgGREzLKh0Ltag1PE8yUXWNTN8qYtllAPznISJmaKRdN2AXH3Xd0gk+fyTyyABgN/FBvIH6pWXT52PGqDYc4HdTlW0CkRK+EqVtN+2usq+QnCLV6h+dUn4NfInseyvLASPwGnNoLC+CtfZxHGefIDucoxvmxyDZAmqWyujntyZTpknEajGzCfkW8MrU+tdHTIe6dqFq25uOFtmUbq3eWhoAwDAyX2ei0LfCUl631bKOam1yhxSbJgfi7lkmfhf5UGKiZzBHWK6nzB8iWjw9lZmF8r62u3USiXcz5O9Aue26gyXxmmvFHy2V8ieWSqXxqNNxCgCgLGBd+YHKQ0grU+U+2y6eFiILsNC4QYAwXbzKhUR8g09469P1VHYRNfzGjx9fAv8yqVbOZ6brIP4Q1DoxnxBjeiquVa8tFjdPbq0clIYCgG6wIKi6jYO3cyRLdRm+1z+wcDC5jdv8ythC0nvHvYC3/H2fmmtvk+iZfV7CxssVUvUuwjL829u4La+aCF0Q59jttpX7TUvNBmEoAKmU+YyI990G3bpbngggfoKDyVUDA/lD6wQjWsTX5PFUKnuXMB9LxEup3Y/5eMZeIQbJoQOSdlVCAVCVOEahGwhKpghRksaoPNmr0BrHyrftr6rOzhLGpVcQPYuEaQ4TFdvYYQySZ7pW4a42ejVxUwB0ve990rTjMVhtqGm2vmgAoQz6vZvLHSIikT6XrU0GpYZh3obxI0NCDwH8N4MaOziQn2uXclfDl/ozgR0K20tNAVByXe99Xli7CIi+ivt2n6c4dM6SBD/gusV50t8feeKEeh0lPW1+SzfMT8Gvh1BxCyg0aayd4TiFT4YKtzNbAqB0EH4rpVyeqzGrUTtKqB+Htf9SJ843IiLUilCZGXFiDK5Jp3wB4n0hEz0Z9gBEwZEa8dcQBckwueJp6tKODHP8qz1GZjmOxU+KOCoTa3weEV/uWvmnAcTl1OQn0p9x7PxypacIusP27ZtUq7EZn81kKrOCKzSXRJ6vMRsuaPwccpymJ1yRAPBtJtPZVeiH95LWdRAxL/P5zXMsY4imMfPVjlVY75ZyX6zXda3i+Y6lrUWfvgSD6jRFkC9yrPwmxyrMRjlS6jHNtVUaPIOI/gNqTONdHlTds5Ffu+8IAFUDjanquv6BbmQWkHgLmFgdPytRU8JbwHpfDhDmvzg4urKtfAG5J+T9lpn6ULHeQTWAYsotK9xSaRhg0Gua0un9N0LYbpyCyvDUMQD11fV03zKE4GREw+Mk8td6WasyE/VCjgzXFkm4Onf16tVdLVSGiWDw/WGMCDe7BIBvH9FwqseJmTB2HTG94vNHIJ81ZUpffXS0NOmx3NdSIUQIn0O4O8HCCfGH3UbmCiH5DqLhOZjAkgLXXUxOKTk9qgkRb11UXV9vxABQBpm5ahjZN5KcOFOLa0cq3q4SttH1qDY8j52our7eiALgG+VU6sOent5/6zimkrJgzU79kA0QMYjUQIUBnyL9Ur0Df4qkWFOKR5mn1DT9y6gA4BtXuZHNvmGkzXEAI5k0enWOxU4mlofRTUL3HFQdn9Cd3qL3BkekK/k2G/NRB6D+gegikkymn03q5mzMLG+vl4WUn9MqfBpPmqSiJkQcZMXj1HF7Oq4QfGznHAAxWOXEEiK5CbXV9xvZjoTP2TOxRGxO0jTDJjY7FBtKItLx+mNMAFB+G4axYbBMPxWmU8jzvkBCL4rQw6o8WKGLu7vTaltMqUYmZjo8svJ2xaYAOFZuIeboJUWu1X8O0OXtdUYsU3+oMgzzdb2372+YUJ2INf9Zqmx2+OaHHKp63xgqRywMAbB+/XrdcfonYor6GgijNC8loZQiIe0e7MJ64HvYGZ4IMGIR7UdWY+YB0GDkCmGKzBPC2K14NQBEcqbZq88nj/8O5aNBzRKTV3550C5OBwi1us0Udzcf/jBjGtrpc7GZKDxgkdrqVn+OOqC9AdkPk5Ob7EL/tPa6u08DmzCz4BcWUZ09U73FXo9ZrcGbrpkDJpmO0OKxmxyn+PmAbAwYltU/G4PnEoRAX+PjERXveF5X066lWZbVzUTHNVYkjc/iskxSRMzLGX20QWcykXdgA2+339p24asaacuJODR6MZhdvXLlSnXaRWE/LcbVwOGDcGKCrmfuT2az7ynCam8+M/8YQAybarJon7Zt+wD1f5+xILuUfwG7VGr32gxrHJGoP0dumjlz5jC/63VVF0AA7GDhW5zHSB842e3Re5eQyDBDIt5iHJet705wbiyImT63w/NAabNHNDeVMp8OSOoYCoC6WxSZ1lWrVdRFee9NwsR/Lhbdtn+jDQCAOfoRiUQiFrHtanDZ88ASWoPzyJsnTJjQdnmsAKjUN1ZEupI9safqearsWoV7kSdA9Undcz1jrMt49ddoCe1UHeeRUXzRkpyYGFAUOtax8msVH4D0oPErsDRVu7SNjVUANvJUtTGhmMQ+oetLr8ReRNuNWt9BjSqVQWJ6j4K/SQBBXLvghjee1xOx2uigMfp5TPyWIo1pXtLIaN3p9DvMP+uoS2qcyfRXPU+d97/RQUP+x0SrQE8w8YqxIboTC6ipinoM8xbGSVEH/g+pqhCmVCr7NiY+cxAJLw1JmhTwmdwsnlyKB58ztmRe2MTFjtg1AICeh4nPy1WvCqO1TQq1bxcwFNO0b3JMO93ozT4SEI4RY1cfWwPAN5JOj3srX3QXexQ/2KOtBzRSVzL9iK73Pu/rfxTy/wMAAP//Of3BbQAAAAZJREFUAwBaLUQcolOHVQAAAABJRU5ErkJggg==';
-const AMBER = '#E3C79A', BLUE = '#3D82F0', SKY = '#7FB2FF', TILE = '#0E2642', LINE = 'rgba(127,178,255,.32)', INK = '#F4EEE4', MUTED = '#BFCBDB', NAVY = '#0B1E35', PAPER = '#F4EEE4', GREEN = '#16A34A', WARN = '#C2410C';
+const AMBER = '#C9A46A', BLUE = '#0F766E', SKY = '#0F766E', TILE = '#FFFFFF', LINE = 'rgba(15,118,110,.28)', INK = '#12302E', MUTED = '#4B5B58', NAVY = '#12302E', PAPER = '#F5EFE6', HUB_INK = '#FFFFFF', HUB_MUTED = '#D7EFEC', GREEN = '#16A34A', WARN = '#C2410C';
 const FONT = { en: "'IBM Plex Sans',sans-serif", ar: "'IBM Plex Sans Arabic',sans-serif" };
 const MONO = "'IBM Plex Mono',monospace";
 
@@ -67,19 +67,19 @@ const flow1 = {
           '<g transform="translate(' + s.rx(0, 56) + ' ' + (y + V.icon[1]) + ') scale(1.1)">' + ICON[s.kind] + '</g>' +
           '<rect x="' + s.rx(70, 84) + '" y="' + my0 + '" width="84" height="60" rx="6" fill="' + PAPER + '" data-meter="' + i + '" style="transition:fill .4s"/>' +
           '<rect x="' + (mx - 35) + '" y="' + (my0 + 7) + '" width="70" height="25" rx="3" fill="' + NAVY + '"/>' +
-          '<text x="' + mx + '" y="' + (my0 + 24) + '" text-anchor="middle" fill="#4ADE80" font-size="14" font-family="' + MONO + '" data-lcd="' + i + '">000.0</text>' +
+          '<text x="' + mx + '" y="' + (my0 + 24) + '" text-anchor="middle" fill="#16A34A" font-size="14" font-family="' + MONO + '" data-lcd="' + i + '">000.0</text>' +
           '<text x="' + mx + '" y="' + (my0 + 49) + '" text-anchor="middle" fill="' + NAVY + '" font-size="10" font-weight="700" font-family="' + MONO + '">kWh</text>' +
           '<circle cx="' + (mx - 25) + '" cy="' + (my0 + 46) + '" r="3" fill="none" stroke="' + NAVY + '" stroke-width="1.5"/><circle cx="' + (mx + 25) + '" cy="' + (my0 + 46) + '" r="3" fill="none" stroke="' + NAVY + '" stroke-width="1.5"/>' +
           '<path d="M' + mx + ' ' + (s.v === 'down' ? my0 + 60 : gy0 + 28) + ' V' + (s.v === 'down' ? gy0 : my0) + '" stroke="' + SKY + '" stroke-width="2" stroke-dasharray="2 3"/>' +
           '<rect x="' + (mx - 24) + '" y="' + gy0 + '" width="48" height="28" rx="5" fill="' + BLUE + '"/>' +
           '<image href="' + MARK + '" x="' + (mx - 18) + '" y="' + (gy0 + 6) + '" width="16" height="16"/>' +
-          '<circle cx="' + (mx + 8) + '" cy="' + (gy0 + 14) + '" r="3" fill="#FFFFFF" class="pulse"/><circle cx="' + (mx + 17) + '" cy="' + (gy0 + 14) + '" r="3" fill="#4ADE80" class="pulse"/>' +
+          '<circle cx="' + (mx + 8) + '" cy="' + (gy0 + 14) + '" r="3" fill="#FFFFFF" class="pulse"/><circle cx="' + (mx + 17) + '" cy="' + (gy0 + 14) + '" r="3" fill="#16A34A" class="pulse"/>' +
           '<text x="' + (s.side ? mx : s.px(144)) + '" y="' + (s.side ? gy0 + 46 : y + V.gwl) + '" text-anchor="' + (s.side ? 'middle' : gwA) + '" fill="' + SKY + '" font-size="12" font-weight="600">' + t.gw + '</text>' +
           '<text x="' + s.px(30) + '" y="' + (y + V.lbl) + '" text-anchor="middle" fill="' + INK + '" font-size="15" font-weight="700">' + t.name(i) + '</text>' +
           '<text x="' + s.px(30) + '" y="' + (y + V.lbl + 17) + '" text-anchor="middle" fill="' + MUTED + '" font-size="12.5">' + t.locs[i] + '</text>' +
-          '<g data-toast="' + i + '" opacity="0" style="transition:opacity .4s"><rect x="' + (tx - 42) + '" y="' + (ty - 13) + '" width="84" height="26" rx="13" fill="#4ADE80"/><text x="' + tx + '" y="' + (ty + 5) + '" text-anchor="middle" fill="' + NAVY + '" font-size="12" font-weight="700" font-family="' + MONO + '">+' + TOPUP + ' kWh</text></g>';
+          '<g data-toast="' + i + '" opacity="0" style="transition:opacity .4s"><rect x="' + (tx - 42) + '" y="' + (ty - 13) + '" width="84" height="26" rx="13" fill="#16A34A"/><text x="' + tx + '" y="' + (ty + 5) + '" text-anchor="middle" fill="' + NAVY + '" font-size="12" font-weight="700" font-family="' + MONO + '">+' + TOPUP + ' kWh</text></g>';
       }).join('') +
-      '<circle r="8" fill="#4ADE80" stroke="rgba(74,222,128,.35)" stroke-width="8" data-packet opacity="0"/>' +
+      '<circle r="8" fill="#16A34A" stroke="rgba(22,163,74,.35)" stroke-width="8" data-packet opacity="0"/>' +
       '<rect x="' + PX0 + '" y="' + PY0 + '" width="' + (PX1 - PX0) + '" height="' + (PY1 - PY0) + '" rx="8" fill="' + PAPER + '"/>' +
       '<text x="' + X(274) + '" y="' + (PY0 + 34) + '" text-anchor="' + A + '" fill="' + NAVY + '" font-size="15" font-weight="700" font-family="' + MONO + '" direction="ltr">SUTRIC PLATFORM</text>' +
       '<circle cx="' + X(436) + '" cy="' + (PY0 + 29) + '" r="5" fill="' + GREEN + '" class="pulse"/>' +
@@ -90,7 +90,7 @@ const flow1 = {
         '<tspan font-family="' + MONO + '" fill="' + NAVY + '" font-weight="700">' + N + '/' + N + '</tspan> ' + t.online + '</text>' +
       '<rect x="' + R(270, 660) + '" y="' + TH + '" width="660" height="' + (30 + N * RH) + '" fill="#FFFFFF" stroke="#E4DACB"/>' +
       '<rect x="' + R(270, 660) + '" y="' + TH + '" width="660" height="30" fill="' + NAVY + '"/>' +
-      [[t.site, C.site], [t.loc, C.loc], [t.credit, C.credit], [t.status, C.status], [t.action, C.btn]].map(([h, x]) => '<text x="' + X(x) + '" y="' + (TH + 20) + '" text-anchor="' + A + '" fill="' + INK + '" font-size="12" font-weight="700">' + h + '</text>').join('') +
+      [[t.site, C.site], [t.loc, C.loc], [t.credit, C.credit], [t.status, C.status], [t.action, C.btn]].map(([h, x]) => '<text x="' + X(x) + '" y="' + (TH + 20) + '" text-anchor="' + A + '" fill="' + HUB_INK + '" font-size="12" font-weight="700">' + h + '</text>').join('') +
       S.map((_, i) => {
         const r = row(i);
         return '<rect x="' + R(271, 658) + '" y="' + (r - 23) + '" width="658" height="' + RH + '" fill="transparent" data-row="' + i + '" style="transition:fill .4s"/>' +
@@ -176,11 +176,11 @@ const T2 = {
 };
 const K2 = ['grid', 'solar', 'bat', 'gen'], SRC_Y = [110, 260, 410, 560], TL = 40, TW2 = 190, TH2 = 104;
 const SYS = { x: 410, y: 250, w: 300, h: 220 }, PORT = [300, 336, 372, 408], PL = 770, PW = 390, PT = 20, PH = 690;
-const COL = { grid: BLUE, solar: AMBER, bat: '#4ADE80', gen: '#B8925A' };
+const COL = { grid: BLUE, solar: AMBER, bat: '#16A34A', gen: '#B8925A' };
 const ICON2 = {
   grid: '<path d="M48 18 L36 78 M48 18 L60 78 M30 34 H66 M34 50 H62 M40 50 L56 66 M56 50 L40 66 M28 78 H68" fill="none" stroke="' + INK + '" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>',
   solar: '<circle cx="64" cy="26" r="9" fill="' + AMBER + '"/><path d="M26 44 H70 L78 74 H18 Z M22 59 H74 M40 44 L36 74 M56 44 L60 74" fill="none" stroke="' + INK + '" stroke-width="3.5" stroke-linejoin="round"/>',
-  bat: '<rect x="18" y="30" width="56" height="40" rx="4" fill="none" stroke="' + INK + '" stroke-width="3.5"/><rect x="74" y="42" width="6" height="16" rx="1" fill="' + INK + '"/><rect x="24" y="36" width="44" height="28" rx="2" fill="#4ADE80" data-socfill/>',
+  bat: '<rect x="18" y="30" width="56" height="40" rx="4" fill="none" stroke="' + INK + '" stroke-width="3.5"/><rect x="74" y="42" width="6" height="16" rx="1" fill="' + INK + '"/><rect x="24" y="36" width="44" height="28" rx="2" fill="#16A34A" data-socfill/>',
   gen: '<rect x="20" y="32" width="56" height="38" rx="4" fill="none" stroke="' + INK + '" stroke-width="3.5"/><path d="M30 32 V24 H50 V32 M26 76 V70 M70 76 V70" stroke="' + INK + '" stroke-width="3.5" fill="none"/><path d="M50 40 L40 53 H48 L44 64 L56 49 H48 Z" fill="' + AMBER + '"/>',
 };
 const BLD = '<rect x="8" y="4" width="36" height="50" fill="none" stroke="' + INK + '" stroke-width="2.5"/>' + [0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => '<rect x="' + (14 + c * 9) + '" y="' + (10 + r * 9) + '" width="6" height="6" fill="' + SKY + '"/>').join('')).join('') + '<rect x="21" y="45" width="10" height="9" fill="' + AMBER + '"/>';
@@ -199,7 +199,7 @@ const flow2 = {
     return '<svg viewBox="0 -30 1200 790" role="img" aria-label="' + t.title + '">' +
       K2.map((k, j) => '<path d="' + fwd(j) + '" fill="none" stroke="' + LINE + '" stroke-width="2"/>' +
         '<g data-fl="' + k + '" style="transition:opacity .5s"><path d="' + fwd(j) + '" fill="none" stroke="' + AMBER + '" stroke-width="3" class="dash" stroke-linecap="round"/>' + dotM(fwd(j)) + '</g>' +
-        (k === 'bat' ? '<g data-fl="bat-in" style="transition:opacity .5s" opacity="0"><path d="' + rev(j) + '" fill="none" stroke="#4ADE80" stroke-width="3" class="dash" stroke-linecap="round"/><circle r="5.5" fill="#4ADE80" stroke="rgba(74,222,128,.35)" stroke-width="5"><animateMotion dur="1.2s" repeatCount="indefinite" path="' + rev(j) + '"/></circle></g>' : '') +
+        (k === 'bat' ? '<g data-fl="bat-in" style="transition:opacity .5s" opacity="0"><path d="' + rev(j) + '" fill="none" stroke="#16A34A" stroke-width="3" class="dash" stroke-linecap="round"/><circle r="5.5" fill="#16A34A" stroke="rgba(22,163,74,.35)" stroke-width="5"><animateMotion dur="1.2s" repeatCount="indefinite" path="' + rev(j) + '"/></circle></g>' : '') +
         '<g data-tile="' + k + '" style="transition:opacity .5s">' +
         '<rect x="' + R(TL, TW2) + '" y="' + (SRC_Y[j] - TH2 / 2) + '" width="' + TW2 + '" height="' + TH2 + '" rx="8" fill="' + TILE + '" stroke="' + LINE + '" stroke-width="1.5"/>' +
         '<g transform="translate(' + R(TL + 6, 72) + ' ' + (SRC_Y[j] - 36) + ') scale(.75)">' + ICON2[k] + '</g>' +
@@ -209,14 +209,14 @@ const flow2 = {
       '<path d="M' + X(sx) + ' ' + (SYS.y + SYS.h) + ' V560" stroke="' + AMBER + '" stroke-width="3" class="dash" stroke-linecap="round"/>' +
       '<path d="' + data + '" stroke="' + BLUE + '" stroke-width="2.5" class="data"/>' +
       '<rect width="10" height="10" x="-5" y="-5" fill="' + SKY + '"><animateMotion dur="1.1s" repeatCount="indefinite" path="' + data + '"/></rect>' +
-      '<rect x="' + R(SYS.x, SYS.w) + '" y="' + SYS.y + '" width="' + SYS.w + '" height="' + SYS.h + '" rx="10" fill="#1F4E8C" stroke="' + SKY + '" stroke-width="1.5"/>' +
+      '<rect x="' + R(SYS.x, SYS.w) + '" y="' + SYS.y + '" width="' + SYS.w + '" height="' + SYS.h + '" rx="10" fill="#0F766E" stroke="' + SKY + '" stroke-width="1.5"/>' +
       '<image href="' + MARK + '" x="' + (X(sx) - 20) + '" y="' + (SYS.y + 22) + '" width="40" height="40"/>' +
-      '<text x="' + X(sx) + '" y="' + (SYS.y + 90) + '" text-anchor="middle" fill="' + INK + '" font-size="16" font-weight="700">' + t.sys + '</text>' +
+      '<text x="' + X(sx) + '" y="' + (SYS.y + 90) + '" text-anchor="middle" fill="' + HUB_INK + '" font-size="16" font-weight="700">' + t.sys + '</text>' +
       '<rect x="' + (X(sx) - 96) + '" y="' + (SYS.y + 108) + '" width="192" height="30" rx="15" fill="' + AMBER + '"/>' +
       '<text x="' + X(sx) + '" y="' + (SYS.y + 128) + '" text-anchor="middle" fill="' + NAVY + '" font-size="13" font-weight="700" data-mode>—</text>' +
-      K2.map((k, j) => '<rect x="' + (X(sx) - 66 + j * 36 - 12) + '" y="' + (SYS.y + 160) + '" width="24" height="24" rx="5" fill="#0B1E35" stroke="' + SKY + '" stroke-width="1.2"/>' +
+      K2.map((k, j) => '<rect x="' + (X(sx) - 66 + j * 36 - 12) + '" y="' + (SYS.y + 160) + '" width="24" height="24" rx="5" fill="#0F5F59" stroke="' + SKY + '" stroke-width="1.2"/>' +
         '<g transform="translate(' + (X(sx) - 66 + j * 36 - 10) + ' ' + (SYS.y + 162) + ') scale(.21)">' + ICON2[k].replace(' data-socfill', '') + '</g>' +
-        '<circle cx="' + (X(sx) - 66 + j * 36) + '" cy="' + (SYS.y + 196) + '" r="3.5" fill="#4ADE80" data-sw="' + k + '"/>').join('') +
+        '<circle cx="' + (X(sx) - 66 + j * 36) + '" cy="' + (SYS.y + 196) + '" r="3.5" fill="#16A34A" data-sw="' + k + '"/>').join('') +
       K2.map((k, j) => '<rect x="' + R(px - 8, 8) + '" y="' + (PORT[j] - 7) + '" width="8" height="14" rx="2" fill="' + SKY + '"/>').join('') +
       '<g transform="translate(' + (X(sx) - 31) + ' 560) scale(1.2)">' + BLD + '</g>' +
       '<text x="' + X(sx) + '" y="650" text-anchor="middle" fill="' + INK + '" font-size="15" font-weight="700">' + t.load + '</text>' +
@@ -284,7 +284,7 @@ const flow2 = {
         q('[data-fl="' + k + '"]').setAttribute('opacity', on ? 1 : 0);
         q('[data-tile="' + k + '"]').setAttribute('opacity', active ? 1 : 0.45);
         q('[data-led="' + k + '"]').setAttribute('fill', active ? AMBER : '#4F5866');
-        q('[data-sw="' + k + '"]').setAttribute('fill', active ? '#4ADE80' : '#4F5866');
+        q('[data-sw="' + k + '"]').setAttribute('fill', active ? '#16A34A' : '#4F5866');
         const sign = k === 'bat' ? (charging ? '+' : discharging ? '−' : '') : '';
         q('[data-kw="' + k + '"]').textContent = k === 'grid' && !gridOn ? t.outage : k === 'gen' && !genOn ? t.standby : sign + kw[k].toFixed(1) + ' kW';
         q('[data-pkw="' + k + '"]').textContent = sign + kw[k].toFixed(1) + ' kW';
@@ -292,7 +292,7 @@ const flow2 = {
       });
       q('[data-fl="bat-in"]').setAttribute('opacity', charging ? 1 : 0);
       q('[data-socfill]').setAttribute('width', Math.max(2, 44 * soc / 100));
-      q('[data-socfill]').setAttribute('fill', soc < 35 ? '#F59E0B' : '#4ADE80');
+      q('[data-socfill]').setAttribute('fill', soc < 35 ? '#F59E0B' : '#16A34A');
       q('[data-psub="grid"]').textContent = t.today + ' ' + today.grid.toFixed(0) + ' kWh · ' + (gridOn ? t.online : t.outage);
       q('[data-psub="solar"]').textContent = t.today + ' ' + today.solar.toFixed(0) + ' kWh';
       q('[data-psub="bat"]').textContent = t.soc + ' ' + soc.toFixed(0) + '% · ' + (charging ? t.charging : discharging ? t.discharging : t.idle);
@@ -330,7 +330,7 @@ const S3 = 'stroke="' + INK + '" stroke-width="3" fill="none" stroke-linecap="ro
 const BLADES = '<ellipse cx="32" cy="15" rx="5" ry="9" fill="' + SKY + '"/><ellipse cx="32" cy="15" rx="5" ry="9" fill="' + SKY + '" transform="rotate(120 32 24)"/><ellipse cx="32" cy="15" rx="5" ry="9" fill="' + SKY + '" transform="rotate(240 32 24)"/><circle cx="32" cy="24" r="3" fill="' + INK + '"/>';
 const BULB = 'M24 40 A14 14 0 1 1 40 40 V46 H24 Z';
 const ICON3 = {
-  ac: { base: '<rect x="6" y="12" width="52" height="24" rx="4" ' + S3 + '/><path d="M12 29 H52" ' + S3 + ' stroke-width="2"/><circle cx="50" cy="19" r="2" fill="#4ADE80"/>',
+  ac: { base: '<rect x="6" y="12" width="52" height="24" rx="4" ' + S3 + '/><path d="M12 29 H52" ' + S3 + ' stroke-width="2"/><circle cx="50" cy="19" r="2" fill="#16A34A"/>',
     on: '<path d="M16 44 q5 6 0 12 M32 44 q5 6 0 12 M48 44 q5 6 0 12" stroke="' + SKY + '" stroke-width="2.5" fill="none" class="dash" stroke-linecap="round"/>', off: '' },
   heater: { base: '<path d="M12 54 V26 a4 4 0 0 1 8 0 V54 M24 54 V26 a4 4 0 0 1 8 0 V54 M36 54 V26 a4 4 0 0 1 8 0 V54 M48 54 V26 a4 4 0 0 1 8 0 V54 M8 54 H60 M8 46 H60" ' + S3 + ' stroke-width="2.5"/>',
     on: '<path d="M20 16 q-4 -5 0 -10 M34 16 q-4 -5 0 -10 M48 16 q-4 -5 0 -10" stroke="#F59E0B" stroke-width="2.5" fill="none" stroke-linecap="round" class="pulse"/>', off: '' },
@@ -351,12 +351,12 @@ const flow3 = {
     const dot = (p, c, sc) => '<circle r="5.5" fill="' + c + '" stroke="' + sc + '" stroke-width="5"><animateMotion dur="1.2s" repeatCount="indefinite" path="' + p + '"/></circle>';
     const feed = 'M' + X(CT.x + CT.w) + ' 385 H' + X(BUS);
     return '<svg viewBox="0 20 1200 710" role="img" aria-label="' + t.title + '">' +
-      '<polygon points="' + X(680) + ',130 ' + X(930) + ',34 ' + X(1180) + ',130" fill="rgba(14,38,66,.55)" stroke="' + LINE + '" stroke-width="1.5" stroke-linejoin="round"/>' +
-      '<rect x="' + R(700, 460) + '" y="130" width="460" height="510" fill="rgba(14,38,66,.55)" stroke="' + LINE + '" stroke-width="1.5"/>' +
+      '<polygon points="' + X(680) + ',130 ' + X(930) + ',34 ' + X(1180) + ',130" fill="rgba(15,118,110,.05)" stroke="' + LINE + '" stroke-width="1.5" stroke-linejoin="round"/>' +
+      '<rect x="' + R(700, 460) + '" y="130" width="460" height="510" fill="rgba(15,118,110,.05)" stroke="' + LINE + '" stroke-width="1.5"/>' +
       '<text x="' + X(930) + '" y="106" text-anchor="middle" fill="' + INK + '" font-size="16" font-weight="700">' + t.home + '</text>' +
       K3.map((k, j) => '<path d="' + fwd(j) + '" fill="none" stroke="' + LINE + '" stroke-width="2"/>' +
         '<g data-fl="' + k + '" style="transition:opacity .5s"><path d="' + fwd(j) + '" fill="none" stroke="' + AMBER + '" stroke-width="3" class="dash" stroke-linecap="round"/>' + dot(fwd(j), AMBER, 'rgba(227,199,154,.35)') + '</g>' +
-        (k === 'bat' ? '<g data-fl="bat-in" style="transition:opacity .5s" opacity="0"><path d="' + rev(j) + '" fill="none" stroke="#4ADE80" stroke-width="3" class="dash" stroke-linecap="round"/>' + dot(rev(j), '#4ADE80', 'rgba(74,222,128,.35)') + '</g>' : '') +
+        (k === 'bat' ? '<g data-fl="bat-in" style="transition:opacity .5s" opacity="0"><path d="' + rev(j) + '" fill="none" stroke="#16A34A" stroke-width="3" class="dash" stroke-linecap="round"/>' + dot(rev(j), '#16A34A', 'rgba(22,163,74,.35)') + '</g>' : '') +
         '<g data-tile="' + k + '" style="transition:opacity .5s">' +
         '<rect x="' + R(40, 190) + '" y="' + (SY3[j] - 55) + '" width="190" height="110" rx="8" fill="' + TILE + '" stroke="' + LINE + '" stroke-width="1.5"/>' +
         '<g transform="translate(' + R(46, 72) + ' ' + (SY3[j] - 36) + ') scale(.75)">' + ICON2[k] + '</g>' +
@@ -367,16 +367,16 @@ const flow3 = {
       '<path d="' + feed + '" stroke="' + LINE + '" stroke-width="2"/>' +
       '<path d="' + feed + '" stroke="' + AMBER + '" stroke-width="3" class="dash" stroke-linecap="round"/>' + dot(feed, AMBER, 'rgba(227,199,154,.35)') +
       '<path d="M' + X(BUS) + ' 264 V505" stroke="' + AMBER + '" stroke-width="3" stroke-linecap="round"/>' +
-      '<rect x="' + R(CT.x, CT.w) + '" y="' + CT.y + '" width="' + CT.w + '" height="' + CT.h + '" rx="10" fill="#1F4E8C" stroke="' + SKY + '" stroke-width="1.5"/>' +
+      '<rect x="' + R(CT.x, CT.w) + '" y="' + CT.y + '" width="' + CT.w + '" height="' + CT.h + '" rx="10" fill="#0F766E" stroke="' + SKY + '" stroke-width="1.5"/>' +
       PORT3.map((y) => '<rect x="' + R(CT.x - 8, 8) + '" y="' + (y - 7) + '" width="8" height="14" rx="2" fill="' + SKY + '"/>').join('') +
       '<image href="' + MARK + '" x="' + (X(cx) - 18) + '" y="' + (CT.y + 20) + '" width="36" height="36"/>' +
-      '<text x="' + X(cx) + '" y="' + (CT.y + 82) + '" text-anchor="middle" fill="' + INK + '" font-size="16" font-weight="700">' + t.ctl + '</text>' +
+      '<text x="' + X(cx) + '" y="' + (CT.y + 82) + '" text-anchor="middle" fill="' + HUB_INK + '" font-size="16" font-weight="700">' + t.ctl + '</text>' +
       '<rect x="' + (X(cx) - 90) + '" y="' + (CT.y + 98) + '" width="180" height="30" rx="15" fill="' + AMBER + '"/>' +
       '<text x="' + X(cx) + '" y="' + (CT.y + 118) + '" text-anchor="middle" fill="' + NAVY + '" font-size="13" font-weight="700" data-mode>—</text>' +
-      '<text x="' + X(cx) + '" y="' + (CT.y + 158) + '" text-anchor="middle" fill="' + MUTED + '" font-size="12.5" data-csoc>—</text>' +
-      '<rect x="' + (X(cx) - 80) + '" y="' + (CT.y + 168) + '" width="160" height="6" rx="3" fill="#0B1E35"/>' +
-      '<rect x="' + (X(cx) - 80) + '" y="' + (CT.y + 168) + '" width="0" height="6" rx="3" fill="#4ADE80" data-cbar style="transition:width .6s"/>' +
-      '<text x="' + X(cx) + '" y="' + (CT.y + 200) + '" text-anchor="middle" fill="' + MUTED + '" font-size="12.5" data-cload>—</text>' +
+      '<text x="' + X(cx) + '" y="' + (CT.y + 158) + '" text-anchor="middle" fill="' + HUB_MUTED + '" font-size="12.5" data-csoc>—</text>' +
+      '<rect x="' + (X(cx) - 80) + '" y="' + (CT.y + 168) + '" width="160" height="6" rx="3" fill="#0F5F59"/>' +
+      '<rect x="' + (X(cx) - 80) + '" y="' + (CT.y + 168) + '" width="0" height="6" rx="3" fill="#16A34A" data-cbar style="transition:width .6s"/>' +
+      '<text x="' + X(cx) + '" y="' + (CT.y + 200) + '" text-anchor="middle" fill="' + HUB_MUTED + '" font-size="12.5" data-cload>—</text>' +
       LOADS.map((L) => {
         const lx = L.x + 95, sx = L.x < BUS ? L.x + 190 : L.x, sy = L.y + 112, ic = ICON3[L.k];
         return '<path d="M' + X(BUS) + ' ' + sy + ' H' + X(sx) + '" stroke="' + AMBER + '" stroke-width="3" data-stub="' + L.k + '" style="transition:stroke .4s"/>' +
