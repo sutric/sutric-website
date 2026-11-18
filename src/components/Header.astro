@@ -5,7 +5,7 @@ const c = t(Astro.props.lang);
 ---
 <header class="header">
   <div class="container inner">
-    <a href={c.home} class="logo" aria-label={c.meta.title}><img src="/images/logo-white.png" alt={c.meta.title} /></a>
+    <a href={c.home} class="logo" aria-label={c.meta.title}><img src="/images/logo/sutric-logo-white.svg" alt={c.meta.title} /></a>
     <nav aria-label="Main">
       {c.nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>

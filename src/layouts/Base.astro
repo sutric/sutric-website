@@ -13,9 +13,13 @@ const origin = Astro.site?.origin ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{c.meta.title}</title>
     <meta name="description" content={c.meta.description} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0E2A2B" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0E2A2B" />
     <link rel="alternate" hreflang="ar" href={origin + '/'} />
     <link rel="alternate" hreflang="en" href={origin + '/en/'} />
     <link rel="alternate" hreflang="x-default" href={origin + '/'} />
@@ -25,6 +29,11 @@ const origin = Astro.site?.origin ?? '';
     <meta property="og:title" content={c.meta.title} />
     <meta property="og:description" content={c.meta.description} />
     <meta property="og:locale" content={lang} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={origin + '/og-image.png'} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <slot />
